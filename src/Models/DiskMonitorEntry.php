@@ -11,4 +11,9 @@ class DiskMonitorEntry extends Model
     use HasFactory;
 
     public $guarded = [];
+
+    public static function last() :? self
+    {
+        return static::orderByDesc('id')->first();
+    }
 }

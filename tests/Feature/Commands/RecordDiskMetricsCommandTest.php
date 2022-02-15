@@ -17,14 +17,15 @@ class RecordDiskMetricsCommandTest extends TestCase
     }
 
     /** @test */
-    public function it_will_record_zero_files_for_empty_disks()
+    public function it_will_record_the_file_count_for_a_disk()
     {
-        Storage::disk('local')->put('test.txt', 'test');
+        $this->artisan(RecordDiskMetricsCommand::class)->assertExitCode(0);
+        $entry = DiskMonitorEntry::last();
+        $this->assertEquals(0, $entry->file_count);
 
-        $this
-            ->artisan(RecordDiskMetricsCommand::class)
-            ->assertExitCode(0);
-
-        $this->assertCount(1, DiskMonitorEntry::get());
+        Storage::put('test.txt', 'test');
+        $this->artisan(RecordDiskMetricsCommand::class)->assertExitCode(0);
+        $entry = DiskMonitorEntry::last();
+        $this->assertEquals(1, $entry->file_count);
     }
 }
