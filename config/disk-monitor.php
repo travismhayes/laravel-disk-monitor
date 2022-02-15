@@ -4,7 +4,7 @@
         /**
          * The names of the disks you want to monitor
          */
-        'disk_name' => [
+        'disk_names' => [
             'local'
         ],
     ];
