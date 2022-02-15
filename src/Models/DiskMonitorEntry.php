@@ -11,7 +11,7 @@ class DiskMonitorEntry extends Model
 
     public $guarded = [];
 
-    public static function last() :? self
+    public static function last(): ?self
     {
         return static::orderByDesc('id')->first();
     }
