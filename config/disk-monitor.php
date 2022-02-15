@@ -4,5 +4,5 @@
         /**
          * The name of the
          */
-        'disk_name' => 'local'
+        'disk_name' => 'local',
     ];
