@@ -2,7 +2,9 @@
     // config for TravisHayes/LaravelDiskMonitor
     return [
         /**
-         * The name of the
+         * The names of the disks you want to monitor
          */
-        'disk_name' => 'local',
+        'disk_name' => [
+            'local'
+        ],
     ];
