@@ -1,5 +1,8 @@
 <?php
-// config for TravisHayes/LaravelDiskMonitor
-return [
-
-];
+    // config for TravisHayes/LaravelDiskMonitor
+    return [
+        /**
+         * The name of the
+         */
+        'disk_name' => 'local'
+    ];

@@ -4,7 +4,7 @@ namespace TravisHayes\LaravelDiskMonitor\Commands;
 
 use Illuminate\Console\Command;
 
-class LaravelDiskMonitorCommand extends Command
+class RecordDiskMetrics extends Command
 {
     public $signature = 'laravel-disk-monitor';
 
