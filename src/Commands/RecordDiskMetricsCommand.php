@@ -4,7 +4,6 @@ namespace TravisHayes\LaravelDiskMonitor\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use PHPUnit\Util\Filesystem;
 use TravisHayes\LaravelDiskMonitor\Models\DiskMonitorEntry;
 
 class RecordDiskMetricsCommand extends Command
@@ -16,7 +15,7 @@ class RecordDiskMetricsCommand extends Command
     public function handle(): int
     {
         collect(config('disk-monitor.disk_names'))
-            ->each(fn(string $diskName) => $this->recordMetrics($diskName));
+            ->each(fn (string $diskName) => $this->recordMetrics($diskName));
 
         $this->comment('All done!');
 
@@ -35,6 +34,5 @@ class RecordDiskMetricsCommand extends Command
             'disk_name' => $diskName,
             'file_count' => $fileCount,
         ]);
-
     }
 }

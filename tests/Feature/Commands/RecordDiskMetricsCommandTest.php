@@ -43,5 +43,4 @@ class RecordDiskMetricsCommandTest extends TestCase
         $this->assertEquals('local', $entries[0]->disk_name);
         $this->assertEquals('anotherDisk', $entries[1]->disk_name);
     }
-
 }
