@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TravisHayes\LaravelDiskMonitor\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

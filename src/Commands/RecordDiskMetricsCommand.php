@@ -22,7 +22,7 @@ class RecordDiskMetricsCommand extends Command
 
         DiskMonitorEntry::create([
             'disk_name' => $diskName,
-            'file_count' => $fileCount
+            'file_count' => $fileCount,
         ]);
 
         $this->comment('All done!');
