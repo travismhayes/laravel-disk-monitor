@@ -5,16 +5,6 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/travishayes/laravel-disk-monitor/Check%20&%20fix%20styling?label=code%20style)](https://github.com/travishayes/laravel-disk-monitor/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/travishayes/laravel-disk-monitor.svg?style=flat-square)](https://packagist.org/packages/travishayes/laravel-disk-monitor)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-disk-monitor.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-disk-monitor)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
@@ -40,6 +30,10 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /**
+     * The name of the
+     */
+    'disk_name' => 'local',
 ];
 ```
 
@@ -53,7 +47,6 @@ php artisan vendor:publish --tag="laravel-disk-monitor-views"
 
 ```php
 $laravelDiskMonitor = new TravisHayes\LaravelDiskMonitor();
-echo $laravelDiskMonitor->echoPhrase('Hello, TravisHayes!');
 ```
 
 ## Testing
