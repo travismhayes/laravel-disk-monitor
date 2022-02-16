@@ -1,9 +1,8 @@
 <?php
 
-
 namespace TravisHayes\LaravelDiskMonitor\Tests\Feature\Http\Controllers;
 
-use \TravisHayes\LaravelDiskMonitor\Tests\TestCase;
+use TravisHayes\LaravelDiskMonitor\Tests\TestCase;
 
 class DiskMetricsControllerTest extends TestCase
 {

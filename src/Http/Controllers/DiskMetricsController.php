@@ -11,7 +11,7 @@ class DiskMetricsController
         $entries = DiskMonitorEntry::latest()->get();
 
         return view('disk-monitor::entries', [
-            'entries'=> $entries
+            'entries' => $entries,
         ]);
     }
 }
