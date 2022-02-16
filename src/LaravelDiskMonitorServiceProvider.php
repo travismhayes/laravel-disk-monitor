@@ -20,7 +20,7 @@ class LaravelDiskMonitorServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')
-            ->hasMigration('create_laravel-disk-monitor_table')
+            ->hasMigration('create_disk_monitor_tables')
             ->hasCommand(RecordDiskMetricsCommand::class);
     }
 }

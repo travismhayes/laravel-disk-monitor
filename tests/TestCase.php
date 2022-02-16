@@ -3,11 +3,14 @@
 namespace TravisHayes\LaravelDiskMonitor\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use TravisHayes\LaravelDiskMonitor\LaravelDiskMonitorServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -29,7 +32,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
 
-        $migration = include __DIR__.'/../database/migrations/create_disk_monitor_entries_table.php.stub';
+        $migration = include __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub';
         $migration->up();
     }
 }
