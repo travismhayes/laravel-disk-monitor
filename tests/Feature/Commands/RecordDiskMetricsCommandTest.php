@@ -46,6 +46,5 @@ class RecordDiskMetricsCommandTest extends TestCase
 
         $this->assertEquals('anotherDisk', $entries[1]->disk_name);
         $this->assertEquals(1, $entries[1]->file_count);
-
     }
 }
