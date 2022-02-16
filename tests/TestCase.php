@@ -2,22 +2,25 @@
 
 namespace TravisHayes\LaravelDiskMonitor\Tests;
 
+use CreateDiskMonitorTables;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
 use TravisHayes\LaravelDiskMonitor\LaravelDiskMonitorServiceProvider;
 
 class TestCase extends Orchestra
 {
-    use RefreshDatabase;
-
     protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'TravisHayes\\LaravelDiskMonitor\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            function (string $modelName) {
+                return 'TravisHayes\\LaravelDiskMonitor\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+            }
         );
+
+        Route::diskMonitor('disk-monitor');
     }
 
     protected function getPackageProviders($app)
@@ -29,10 +32,14 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
 
-
-        $migration = include __DIR__ . '/../database/migrations/create_disk_monitor_tables.php.stub';
-        $migration->up();
+        include_once __DIR__.'/../database/migrations/create_disk_monitor_tables.php.stub';
+        (new CreateDiskMonitorTables())->up();
     }
 }
