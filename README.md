@@ -33,7 +33,9 @@ return [
     /**
      * The name of the
      */
-    'disk_name' => 'local',
+    'disk_names' => [
+        'local',
+    ]
 ];
 ```
 
@@ -43,11 +45,37 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="laravel-disk-monitor-views"
 ```
 
-## Usage
+Finally, you should schedule the `Spatie\DiskMonitor\Commands\RecordsDiskMetricsCommand` to run daily.
 
 ```php
-$laravelDiskMonitor = new TravisHayes\LaravelDiskMonitor();
+// in app/Console/Kernel.php
+
+use TravisHayes\LaravelDiskMonitor\Commands\RecordsDiskMetricsCommand;
+
+class Kernel extends ConsoleKernel
+{
+    protected function schedule(Schedule $schedule)
+    {
+       // ...
+        $schedule->command(RecordsDiskMetricsCommand::class)->daily();
+    }
+}
+
 ```
+
+## Usage
+
+You can view the amount of files each monitored disk has, in the `disk_monitor_entries` table.
+
+If you want to view the statistics in the browser add this macro to your routes file.
+
+```php
+// in a routes files
+
+Route::diskMonitor('my-disk-monitor-url');
+```
+
+Now, you can see all statics when browsing `/my-disk-monitor-url`. Of course, you can use any url you want when using the `diskMonitor` route macro. We highly recommand using the `auth` middleware for this route, so guests can't see any data regarding your disks.
 
 ## Testing
 
